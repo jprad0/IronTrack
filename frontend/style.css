@@ -1,0 +1,11 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.treinos {
+    margin: auto;
+    height: 150px;
+    width: 1500px;
+}

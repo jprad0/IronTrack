@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Treinos</h1>
+
+    <table class="treinos" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Exercicio</th>
+                <th>Peso</th>
+                <th>Reps</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+    </table>
+
+ 
+
+
+
+    <h2>Registrar Treino</h2>
+
+    <input id="exercicio" placeholder="Ex: Supino Inclinado">
+    <input id="peso" placeholder="Peso (Kg)">
+    <input id="reps" placeholder="Repetições">
+
+    <button onclick="registrarTreino()">Registrar Treino</button>
+
+    <h3>Calcular Repetição Maxima</h3>
+    <input id="exercicio_calc" placeholder="Ex: Supino Inclinado">
+    <input id="peso_calc" placeholder="Peso (kg)">
+    <input id="reps_calc" placeholder="Repetições">
+
+    <button onclick="registrarRm()">Registrar</button>
+
+    <p id="resultado"></p>
+ 
+
+
+    <h1>API test</h1>
+    <button onclick="clicou()">Clique aqui</button>
+
+    <button onclick="testarAPI()">API test</button>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
