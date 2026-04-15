@@ -39,6 +39,29 @@ function carregarTabela() {
 // carrega automaticamente quando abrir a pagina
 window.onload = carregarTabela;
 
+function registrarAccount() {
+  fetch("http://127.0.0.1:8000/registro", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      nome: "Joao",
+      senha: "123"
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    alert(data.msg)
+  })
+  .catch(err => {
+    console.error("Erro:", err)
+  })
+}
+
+
+
 function registrarTreino() {
   const exercicio = document.getElementById("exercicio").value;
   const peso = document.getElementById("peso").value;
