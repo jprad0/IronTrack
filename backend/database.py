@@ -14,9 +14,17 @@ def criar_tabela():
                    data TEXT
 )
 """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS usuarios (
+                   id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   nome TEXT,
+                   senha TEXT)
+""")
     
 def visualizar_tabela():
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    cursor.execute("SELECT * FROM treinos")
     print(cursor.fetchall())
+
     
 conn.commit()
