@@ -13,15 +13,23 @@ def criar_tabela():
                    reps INTEGER,
                    data TEXT
 )
-""")
-
+""")    
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS usuarios (
-                   id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   nome TEXT,
-                   senha TEXT)
+    CREATE TABLE IF NOT EXISTS usuarios_novo (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    email TEXT UNIQUE,
+    senha TEXT
+)
 """)
     
+    cursor.execute("""
+    drop table if exists usuarios
+""")
+
+
+
+ 
 def visualizar_tabela():
     cursor.execute("SELECT * FROM treinos")
     print(cursor.fetchall())

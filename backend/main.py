@@ -25,14 +25,14 @@ def home():
 
 @app.get("/debug")
 def debug():
-    cursor.execute("SELECT * FROM usuarios")
+    cursor.execute("SELECT * FROM usuarios_novo")
     return cursor.fetchall()
 
 @app.post("/registro")
 def registro(usuario: UsuarioCreate):
     cursor.execute(
-        "INSERT INTO usuarios (nome, senha) VALUES (?, ?)",
-        (usuario.nome, usuario.senha)
+        "INSERT INTO usuarios_novo (username, email, senha) VALUES (?, ?, ?)",
+        (usuario.username, usuario.email, usuario.senha)
     )
     conn.commit()  # ⚠️ ESSENCIAL
 
@@ -40,14 +40,14 @@ def registro(usuario: UsuarioCreate):
 
 @app.post("/login")
 def login(usuario: UsuarioLogin):
-    nome = usuario.nome.strip()
+    username = usuario.username.strip()
     senha = usuario.senha.strip()
 
-    print("DEBUG:", nome, senha)  # 👀 vê no terminal
+    print("DEBUG:", username, senha)  # 👀 vê no terminal
 
     cursor.execute(
-        "SELECT * FROM usuarios WHERE nome=? AND senha=?",
-        (nome, senha)
+        "SELECT * FROM usuarios_novo WHERE username=? AND senha=? AND email=?",
+        (username, senha, usuario.email)
     )
 
     user = cursor.fetchone()

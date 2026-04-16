@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 
 class UsuarioCreate(BaseModel):
-    nome: str
+    username: str
+    email: str
     senha: str
 
 class Treino(BaseModel):
@@ -10,5 +11,6 @@ class Treino(BaseModel):
     reps: int
 
 class UsuarioLogin(BaseModel):
-    nome: str
+    username: str
+    email: str
     senha: str
