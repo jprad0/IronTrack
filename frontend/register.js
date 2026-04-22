@@ -18,8 +18,9 @@ function registrar() {
   .then(data => {
     if (data.user_id) {
       localStorage.setItem("usuario_id", data.user_id)
-      window.location.href = "app.html"
-    } else {
+      window.location.href = "loginUI.html"
+    } 
+    else {
       alert("Usuario Registrado com Sucesso!")
     }
   })
