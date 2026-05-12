@@ -22,6 +22,8 @@ function registrar() {
     } 
     else {
       alert("Usuario Registrado com Sucesso!")
+      // manda para a tela de login
+      window.location.href = "loginUI.html"
     }
   })
 }

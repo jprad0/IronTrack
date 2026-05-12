@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from database import conn, cursor, criar_tabela,inserir_exercicios
+from database import conn, cursor, criar_tabela,visualizar_tabela
 from models import UsuarioCreate, UsuarioLogin
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
@@ -14,10 +14,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-inserir_exercicios()
 
-criar_tabela()
-
+# criar_tabela()
+visualizar_tabela()
 # ==========================
 # HOME
 # ==========================
@@ -39,7 +38,7 @@ def debug():
 @app.post("/registro")
 def registro(usuario: UsuarioCreate):
     cursor.execute(
-        "INSERT INTO usuarios_novo (username, email, senha) VALUES (?, ?, ?)",
+        "INSERT INTO usuarios (username, email, senha) VALUES (?, ?, ?)",
         (usuario.username, usuario.email, usuario.senha)
     )
     conn.commit()
@@ -51,7 +50,7 @@ def registro(usuario: UsuarioCreate):
 @app.post("/login")
 def login(usuario: UsuarioLogin):
     cursor.execute(
-        "SELECT * FROM usuarios_novo WHERE username=? AND senha=? AND email=?",
+        "SELECT * FROM usuarios WHERE username=? AND senha=? AND email=?",
         (usuario.username.strip(), usuario.senha.strip(), usuario.email)
     )
 
